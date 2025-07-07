@@ -1,0 +1,427 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rental and Refurbished | InsizaTech</title>
+    <meta name="description" content="Contact Insiza Technologies Pvt Ltd for IT and Telecommunication Infrastructure solutions. Find our address, email, and phone number.">
+     <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/alpinejs" defer></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+
+    <style>body { font-family: 'Poppins', sans-serif; }</style>
+  <header class="bg-white shadow" x-data="{ mobileMenuOpen: false }">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-20">
+                
+                <!-- Logo -->
+                <div class="flex-shrink-0">
+                    <a href="#">
+                        <img class="h-16 w-auto" src="/Images/insiza-logo.jpg" alt="Insiza Technologies">
+                    </a>
+                </div>
+
+                <!-- Desktop Navigation -->
+                <nav class="hidden md:flex space-x-10 mx-auto">
+                    <!-- Home -->
+                    <a href="/index.html" class="text-gray-700 hover:text-blue-600 transition font-medium">Home</a>
+
+                    <!-- About Us -->
+                    <div 
+                        x-data="{ open: false, timer: null }" 
+                        @mouseenter="clearTimeout(timer); open = true;" 
+                        @mouseleave="timer = setTimeout(() => open = false, 200);" 
+                        class="relative"
+                    >
+                        <button class="flex items-center gap-1 text-gray-700 hover:text-blue-600 transition font-medium">
+                            About Us
+                            <svg class="w-4 h-4 transition-transform" :class="{ 'rotate-180': open }" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path d="M19 9l-7 7-7-7" />
+                            </svg>
+                        </button>
+
+                        <div 
+                            x-show="open" 
+                            x-transition 
+                            class="absolute top-full left-1/2 -translate-x-1/2 mt-2 w-48 bg-white shadow-lg border rounded-md z-50"
+                        >
+                            <a href="/About-us/companyOverview.html" class="block px-5 py-3 hover:bg-blue-50 transition">Company Overview</a>
+                            <a href="/About-us/leadershipTeam.html" class="block px-5 py-3 hover:bg-blue-50 transition">Leadership Team</a>
+                            <a href="/About-us/Mission-Vission-Values.html" class="block px-5 py-3 hover:bg-blue-50 transition">Mission, Vision, Values</a>
+                        </div>
+                    </div>
+
+                    <!-- Sales -->
+                    <div 
+                        x-data="{ open: false, timer: null }" 
+                        @mouseenter="clearTimeout(timer); open = true;" 
+                        @mouseleave="timer = setTimeout(() => open = false, 200);" 
+                        class="relative"
+                    >
+                        <button class="flex items-center gap-1 text-gray-700 hover:text-blue-600 transition font-medium">
+                            Sales
+                            <svg class="w-4 h-4 transition-transform" :class="{ 'rotate-180': open }" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path d="M19 9l-7 7-7-7" />
+                            </svg>
+                        </button>
+                        <div 
+                            x-show="open" 
+                            x-transition 
+                            class="absolute top-full left-1/2 -translate-x-1/2 mt-2 w-64 max-h-72 overflow-auto bg-white shadow-lg border rounded-md z-50"
+                        >
+                            <template x-for="item in ['End point', 'Data Center', 'Connectivity', 'Security', 'Audio & Telephony', 'Handheld', 'Printing & Scanning', 'Video Conferencing', 'Visual Display', 'Peripherals', 'License', 'Power', 'Security Surveillance']">
+                                <a href="#" class="block px-5 py-2 hover:bg-blue-50 transition" x-text="item"></a>
+                            </template>
+                        </div>
+                    </div>
+
+                    <!-- Services -->
+                    <div 
+                        x-data="{ open: false, timer: null }" 
+                        @mouseenter="clearTimeout(timer); open = true;" 
+                        @mouseleave="timer = setTimeout(() => open = false, 200);" 
+                        class="relative"
+                    >
+                        <button class="flex items-center gap-1 text-gray-700 hover:text-blue-600 transition font-medium">
+                            Services
+                            <svg class="w-4 h-4 transition-transform" :class="{ 'rotate-180': open }" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path d="M19 9l-7 7-7-7" />
+                            </svg>
+                        </button>
+
+                        <div 
+                            x-show="open" 
+                            x-transition 
+                            class="absolute top-full left-1/2 -translate-x-1/2 mt-2 w-72 bg-white shadow-lg border rounded-md z-50"
+                        >
+                            <div 
+                                x-data="{ subOpen: false, subTimer: null }" 
+                                @mouseenter="clearTimeout(subTimer); subOpen = true;" 
+                                @mouseleave="subTimer = setTimeout(() => subOpen = false, 200);" 
+                                class="relative"
+                            >
+                                <span class="block px-5 py-2 font-semibold text-gray-600 cursor-pointer">Managed Services</span>
+
+                                <div 
+                                    x-show="subOpen" 
+                                    x-transition 
+                                    class="absolute top-0 left-full ml-1 w-72 bg-white border border-gray-200 rounded shadow-lg z-50"
+                                >
+                                   <div class="text-sm" x-data="{
+    services: [
+        { label: 'End User Computing', url: '/Services/Managed_services/EndUserComputing.html' },
+        { label: 'Data Center Management', url: '/Services/Managed_services/DataCenterManagement.html' },
+        { label: 'NOC Management', url: '/Services/Managed_services/NOCManagement.html' },
+        { label: 'Helpdesk Management', url: '/Services/Managed_services/HelpdeskManagement.html' },
+        { label: 'Security Management', url: '/Services/Managed_services/SecurityManagement.html' },
+        { label: 'Application Management', url: '/Services/Managed_services/ApplicationManagement.html' },
+        { label: 'Asset Management', url: '/Services/Managed_services/AssetManagement.html' },
+        { label: 'Building Management Services', url: '/Services/Managed_services/BuildingManagement.html' },
+        { label: 'Procurement & Billing', url: '/Services/Managed_services/ProcurementBilling.html' }
+    ]
+}">
+    <template x-for="item in services" :key="item.label">
+        <a :href="item.url" class="block px-4 py-2 hover:bg-blue-50 transition text-gray-700" x-text="item.label"></a>
+    </template>
+</div>
+
+                                </div>
+                            </div>
+
+                            <a href="/Services/AMC_andBreakFix.html" class="block px-5 py-2 hover:bg-blue-50 transition">AMC & Break Fix</a>
+                            <a href="/Services/E_waste_management.html" class="block px-5 py-2 hover:bg-blue-50 transition">E-Waste Management</a>
+                        </div>
+                    </div>
+
+                    <!-- Solutions -->
+                    <div 
+                        x-data="{ open: false, timer: null }" 
+                        @mouseenter="clearTimeout(timer); open = true;" 
+                        @mouseleave="timer = setTimeout(() => open = false, 200);" 
+                        class="relative"
+                    >
+                        <button class="flex items-center gap-1 text-gray-700 hover:text-blue-600 transition font-medium">
+                            Solutions
+                            <svg class="w-4 h-4 transition-transform" :class="{ 'rotate-180': open }" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path d="M19 9l-7 7-7-7" />
+                            </svg>
+                        </button>
+                       <div 
+    x-show="open" 
+    x-transition 
+    class="absolute top-full left-1/2 -translate-x-1/2 mt-2 w-72 max-h-72 overflow-auto bg-white shadow-lg border rounded-md z-50"
+    x-data="{ items: [
+        { label: 'Server Solutions', url: '/Solutions/ServerSolutions.html' },
+        { label: 'Network Solutions', url: '/Solutions/NetworkSolutions.html' },
+        { label: 'Storage Solutions', url: '/Solutions/StorageSolutions.html' },
+        { label: 'Cloud Solutions', url: '/Solutions/CloudSolutions.html' },
+        { label: 'Security Solutions', url: '/Solutions/SecuritySolutions.html' },
+        { label: 'Application Solutions', url: '/Solutions/ApplicationSolutions.html' },
+        { label: 'Audio Video Solutions', url: '/Solutions/AudioVideoSolutions.html' },
+        { label: 'Video Surveillance & Biometric Solutions', url: '/Solutions/VideoSandbiometric.html' },
+        { label: 'Rental & Refurbished Solutions', url: '/Solutions/RentalandRefurbished.html' }
+    ]}"
+>
+    <template x-for="item in items" :key="item.label">
+        <a :href="item.url" class="block px-5 py-2 hover:bg-blue-50 transition" x-text="item.label"></a>
+    </template>
+</div>
+
+                    </div>
+
+                    <!-- Contact Us -->
+                    <a href="contact.html" class="text-gray-700 hover:text-blue-600 transition font-medium">Contact Us</a>
+                </nav>
+
+                <!-- Mobile menu button -->
+                <div class="md:hidden">
+                    <button 
+                        @click="mobileMenuOpen = !mobileMenuOpen" 
+                        class="inline-flex items-center justify-center p-2 rounded-md text-gray-700 hover:text-blue-600 hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-blue-500"
+                        :class="{ 'text-blue-600': mobileMenuOpen }"
+                    >
+                        <span class="sr-only">Open main menu</span>
+                        <!-- Hamburger icon -->
+                        <svg 
+                            class="h-6 w-6" 
+                            :class="{ 'hidden': mobileMenuOpen, 'block': !mobileMenuOpen }" 
+                            fill="none" 
+                            viewBox="0 0 24 24" 
+                            stroke="currentColor"
+                        >
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+                        </svg>
+                        <!-- Close icon -->
+                        <svg 
+                            class="h-6 w-6" 
+                            :class="{ 'block': mobileMenuOpen, 'hidden': !mobileMenuOpen }" 
+                            fill="none" 
+                            viewBox="0 0 24 24" 
+                            stroke="currentColor"
+                        >
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+                        </svg>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Mobile menu -->
+        <div x-show="mobileMenuOpen" x-transition class="md:hidden bg-white border-t">
+            <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3">
+                <!-- Home -->
+                <a href="#" class="block px-3 py-2 text-gray-700 hover:text-blue-600 hover:bg-gray-50 rounded-md font-medium">Home</a>
+
+                <!-- About Us -->
+                <div x-data="{ open: false }">
+                    <button @click="open = !open" class="flex items-center justify-between w-full px-3 py-2 text-gray-700 hover:text-blue-600 hover:bg-gray-50 rounded-md font-medium">
+                        About Us
+                        <svg class="w-4 h-4 transition-transform" :class="{ 'rotate-180': open }" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path d="M19 9l-7 7-7-7" />
+                        </svg>
+                    </button>
+                    <div x-show="open" x-transition class="pl-6 space-y-1">
+                        <a href="/About-us/companyOverview.html" class="block px-3 py-2 text-sm text-gray-600 hover:text-blue-600 hover:bg-gray-50 rounded-md">Company Overview</a>
+                        <a href="/About-us/leadershipTeam.html" class="block px-3 py-2 text-sm text-gray-600 hover:text-blue-600 hover:bg-gray-50 rounded-md">Leadership Team</a>
+                        <a href="/About-us/Mission-Vission-Values.html" class="block px-3 py-2 text-sm text-gray-600 hover:text-blue-600 hover:bg-gray-50 rounded-md">Mission, Vision, Values</a>
+                    </div>
+                </div>
+
+                <!-- Sales -->
+                <div x-data="{ open: false }">
+                    <button @click="open = !open" class="flex items-center justify-between w-full px-3 py-2 text-gray-700 hover:text-blue-600 hover:bg-gray-50 rounded-md font-medium">
+                        Sales
+                        <svg class="w-4 h-4 transition-transform" :class="{ 'rotate-180': open }" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path d="M19 9l-7 7-7-7" />
+                        </svg>
+                    </button>
+                    <div x-show="open" x-transition class="pl-6 space-y-1">
+                        <template x-for="item in ['End point', 'Data Center', 'Connectivity', 'Security', 'Audio & Telephony', 'Handheld', 'Printing & Scanning', 'Video Conferencing', 'Visual Display', 'Peripherals', 'License', 'Power', 'Security Surveillance']">
+                            <a href="#" class="block px-3 py-2 text-sm text-gray-600 hover:text-blue-600 hover:bg-gray-50 rounded-md" x-text="item"></a>
+                        </template>
+                    </div>
+                </div>
+
+                <!-- Services -->
+                <div x-data="{ open: false, managedOpen: false }">
+                    <button @click="open = !open" class="flex items-center justify-between w-full px-3 py-2 text-gray-700 hover:text-blue-600 hover:bg-gray-50 rounded-md font-medium">
+                        Services
+                        <svg class="w-4 h-4 transition-transform" :class="{ 'rotate-180': open }" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path d="M19 9l-7 7-7-7" />
+                        </svg>
+                    </button>
+                    <div x-show="open" x-transition class="pl-6 space-y-1">
+                        <!-- Managed Services Submenu -->
+                        <div>
+                            <button @click="managedOpen = !managedOpen" class="flex items-center justify-between w-full px-3 py-2 text-sm text-gray-600 hover:text-blue-600 hover:bg-gray-50 rounded-md font-semibold">
+                                Managed Services
+                                <svg class="w-3 h-3 transition-transform" :class="{ 'rotate-180': managedOpen }" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path d="M19 9l-7 7-7-7" />
+                                </svg>
+                            </button>
+                            <div x-show="managedOpen" x-transition class="pl-6 space-y-1">
+                                <template x-for="item in ['End User Computing', 'Data Center Management', 'NOC Management', 'Helpdesk Management', 'Security Management', 'Application Management', 'Asset Management', 'Building Management Services', 'Procurement & Billing']">
+                                    <a href="#" class="block px-3 py-2 text-xs text-gray-500 hover:text-blue-600 hover:bg-gray-50 rounded-md" x-text="item"></a>
+                                </template>
+                            </div>
+                        </div>
+                        <a href="#" class="block px-3 py-2 text-sm text-gray-600 hover:text-blue-600 hover:bg-gray-50 rounded-md">AMC & Break Fix</a>
+                        <a href="#" class="block px-3 py-2 text-sm text-gray-600 hover:text-blue-600 hover:bg-gray-50 rounded-md">E-Waste Management</a>
+                    </div>
+                </div>
+
+                <!-- Solutions -->
+                <div x-data="{ open: false }">
+                    <button @click="open = !open" class="flex items-center justify-between w-full px-3 py-2 text-gray-700 hover:text-blue-600 hover:bg-gray-50 rounded-md font-medium">
+                        Solutions
+                        <svg class="w-4 h-4 transition-transform" :class="{ 'rotate-180': open }" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path d="M19 9l-7 7-7-7" />
+                        </svg>
+                    </button>
+                    <div x-show="open" x-transition class="pl-6 space-y-1">
+                        <template x-for="item in ['Server Solutions', 'Network Solutions', 'Storage Solutions', 'Cloud Solutions', 'Security Solutions', 'Application Solutions', 'Audio Video Solutions', 'Video Surveillance & Biometric Solutions', 'Rental & Refurbished Solutions']">
+                            <a href="#" class="block px-3 py-2 text-sm text-gray-600 hover:text-blue-600 hover:bg-gray-50 rounded-md" x-text="item"></a>
+                        </template>
+                    </div>
+                </div>
+
+                <!-- Contact Us -->
+                <a href="contact.html" class="block px-3 py-2 text-gray-700 hover:text-blue-600 hover:bg-gray-50 rounded-md font-medium">Contact Us</a>
+            </div>
+        </div>
+    </header>
+
+
+<style>
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        
+        @keyframes slideUp {
+            from { transform: translateY(30px); opacity: 0; }
+            to { transform: translateY(0); opacity: 1; }
+        }
+        
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
+        }
+        
+        .animate-fade-in {
+            animation: fadeIn 0.6s ease-out;
+        }
+        
+        .animate-slide-up {
+            animation: slideUp 0.8s ease-out;
+        }
+        
+        .animate-float {
+            animation: float 3s ease-in-out infinite;
+        }
+        
+        .glass-effect {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+        
+        .gradient-bg {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        }
+        
+        .contact-card {
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        
+        .contact-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+        }
+        
+        .form-input {
+            transition: all 0.2s ease;
+        }
+        
+        .form-input:focus {
+            transform: translateY(-2px);
+        }
+        
+        
+        
+    </style>
+</head>
+
+<body>
+
+
+<footer class="bg-gray-100 text-gray-700 mt-12 border-t">
+  <div class="max-w-7xl mx-auto px-4 pt-12 sm:px-6 lg:px-8">
+    <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+      
+      <!-- Logo & Description -->
+      <div>
+        <img src="Images/5.png" alt="Logo" class="h-50 w-40 mb-4">
+        
+      </div>
+
+      <!-- Company -->
+      <div>
+        <h3 class="text-lg font-semibold mb-4">Company</h3>
+        <ul class="space-y-2 text-sm">
+          <li><a href="#" class="hover:text-blue-600">About Us</a></li>
+          <li><a href="#" class="hover:text-blue-600">Leadership Team</a></li>
+          <li><a href="#" class="hover:text-blue-600">Mission, Vision, Values</a></li>
+        </ul>
+      </div>
+
+      <!-- Services -->
+      <div>
+        <h3 class="text-lg font-semibold mb-4">Services</h3>
+        <ul class="space-y-2 text-sm">
+          <li><a href="#" class="hover:text-blue-600">Managed Services</a></li>
+          <li><a href="#" class="hover:text-blue-600">AMC & Break Fix</a></li>
+          <li><a href="#" class="hover:text-blue-600">E-Waste Management</a></li>
+        </ul>
+      </div>
+
+      <!-- Contact & Social -->
+      <div>
+        <h3 class="text-lg font-semibold mb-4">Contact Us</h3>
+        <p class="text-sm mb-2">5th Floor, Innovative Tower, opp. Zensar Technologies, near Eon School, Rakshak Nagar, Kharadi, Pune, Maharashtra 411014</p>
+        <p class="text-sm mb-2">Email: info@example.com</p>
+        <p class="text-sm mb-4">Phone: 020 2681 4444</p>
+        <div class="flex space-x-4">
+          <a href="#" aria-label="Facebook" class="text-gray-500 hover:text-blue-600">
+            <!-- Facebook Icon -->
+            <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+              <path d="M22 12a10 10 0 1 0-11.5 9.9v-7h-2v-2.9h2V9.5c0-2 1.2-3.1 3-3.1.9 0 1.8.2 1.8.2v2h-1c-1 0-1.3.6-1.3 1.2v1.5h2.2l-.4 2.9h-1.8v7A10 10 0 0 0 22 12z"/>
+            </svg>
+          </a>
+          <a href="#" aria-label="LinkedIn" class="text-gray-500 hover:text-blue-600">
+            <!-- LinkedIn Icon -->
+            <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+              <path d="M19 0h-14c-2.8 0-5 2.2-5 5v14c0 2.8 2.2 5 5 5h14c2.7 0 5-2.2 5-5v-14c0-2.8-2.3-5-5-5zM7.5 19h-3v-9h3v9zM6 8.5c-1 0-1.8-.8-1.8-1.8s.8-1.8 1.8-1.8 1.8.8 1.8 1.8-.8 1.8-1.8 1.8zM20 19h-3v-4.5c0-1.1-.9-2-2-2s-2 .9-2 2v4.5h-3v-9h3v1.2c.6-.9 1.7-1.4 2.8-1.4 2.2 0 4 1.8 4 4v5.2z"/>
+            </svg>
+          </a>
+          <!-- Add more icons as needed -->
+        </div>
+      </div>
+    </div>
+
+    <!-- Footer Bottom -->
+    <div class="mt-8 border-t pt-6 text-sm text-center text-gray-500">
+      &copy; 2025 Insiza Technologies Pvt Ltd . All rights reserved.
+    </div>
+  </div>
+</footer>
+<script src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js" defer></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.3.0/flowbite.min.js"></script>
+  </body>
+
+</html>

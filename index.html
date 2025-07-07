@@ -1,0 +1,690 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>InsizaTech</title>
+
+    <!-- TailwindCSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+ <link rel="icon" type="image/x-icon" href="/Images/Favicon1.ico">
+
+  
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap"
+      rel="stylesheet"
+    />
+
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+
+  
+   
+    <style>
+      body {
+        font-family: 'Poppins', sans-serif;
+      }
+
+       @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        
+        @keyframes slideUp {
+            from { transform: translateY(30px); opacity: 0; }
+            to { transform: translateY(0); opacity: 1; }
+        }
+        
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
+        }
+        
+        .animate-fade-in {
+            animation: fadeIn 0.6s ease-out;
+        }
+        
+        .animate-slide-up {
+            animation: slideUp 0.8s ease-out;
+        }
+        
+        .animate-float {
+            animation: float 3s ease-in-out infinite;
+        }
+        
+        .glass-effect {
+            /* Remove background color to let gradient show */
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+        
+        .gradient-bg {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        }
+        
+        
+        
+       
+        
+     
+    </style>
+
+
+<header class="bg-white shadow" x-data="{ mobileMenuOpen: false }">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-20">
+                
+                <!-- Logo -->
+                <div class="flex-shrink-0">
+                    <a href="#">
+                        <img class="h-16 w-auto" src="/Images/insiza-logo.jpg" alt="Insiza Technologies">
+                    </a>
+                </div>
+
+                <!-- Desktop Navigation -->
+                <nav class="hidden md:flex space-x-10 mx-auto">
+                    <!-- Home -->
+                    <a href="index.html" class="text-gray-700 hover:text-blue-600 transition font-medium">Home</a>
+
+                    <!-- About Us -->
+                    <div 
+                        x-data="{ open: false, timer: null }" 
+                        @mouseenter="clearTimeout(timer); open = true;" 
+                        @mouseleave="timer = setTimeout(() => open = false, 200);" 
+                        class="relative"
+                    >
+                        <button class="flex items-center gap-1 text-gray-700 hover:text-blue-600 transition font-medium">
+                            About Us
+                            <svg class="w-4 h-4 transition-transform" :class="{ 'rotate-180': open }" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path d="M19 9l-7 7-7-7" />
+                            </svg>
+                        </button>
+
+                        <div 
+                            x-show="open" 
+                            x-transition 
+                            class="absolute top-full left-1/2 -translate-x-1/2 mt-2 w-48 bg-white shadow-lg border rounded-md z-50"
+                        >
+                            <a href="/About-us/companyOverview.html" class="block px-5 py-3 hover:bg-blue-50 transition">Company Overview</a>
+                            <a href="/About-us/leadershipTeam.html" class="block px-5 py-3 hover:bg-blue-50 transition">Leadership Team</a>
+                            <a href="/About-us/Mission-Vission-Values.html" class="block px-5 py-3 hover:bg-blue-50 transition">Mission, Vision, Values</a>
+                        </div>
+                    </div>
+
+                    <!-- Sales -->
+                    <div 
+                        x-data="{ open: false, timer: null }" 
+                        @mouseenter="clearTimeout(timer); open = true;" 
+                        @mouseleave="timer = setTimeout(() => open = false, 200);" 
+                        class="relative"
+                    >
+                        <button class="flex items-center gap-1 text-gray-700 hover:text-blue-600 transition font-medium">
+                            Sales
+                            <svg class="w-4 h-4 transition-transform" :class="{ 'rotate-180': open }" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path d="M19 9l-7 7-7-7" />
+                            </svg>
+                        </button>
+                        <div 
+                            x-show="open" 
+                            x-transition 
+                            class="absolute top-full left-1/2 -translate-x-1/2 mt-2 w-64 max-h-72 overflow-auto bg-white shadow-lg border rounded-md z-50"
+                        >
+                            <template x-for="item in ['End point', 'Data Center', 'Connectivity', 'Security', 'Audio & Telephony', 'Handheld', 'Printing & Scanning', 'Video Conferencing', 'Visual Display', 'Peripherals', 'License', 'Power', 'Security Surveillance']">
+                                <a href="#" class="block px-5 py-2 hover:bg-blue-50 transition" x-text="item"></a>
+                            </template>
+                        </div>
+                    </div>
+
+                    <!-- Services -->
+                    <div 
+                        x-data="{ open: false, timer: null }" 
+                        @mouseenter="clearTimeout(timer); open = true;" 
+                        @mouseleave="timer = setTimeout(() => open = false, 200);" 
+                        class="relative"
+                    >
+                        <button class="flex items-center gap-1 text-gray-700 hover:text-blue-600 transition font-medium">
+                            Services
+                            <svg class="w-4 h-4 transition-transform" :class="{ 'rotate-180': open }" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path d="M19 9l-7 7-7-7" />
+                            </svg>
+                        </button>
+
+                        <div 
+                            x-show="open" 
+                            x-transition 
+                            class="absolute top-full left-1/2 -translate-x-1/2 mt-2 w-72 bg-white shadow-lg border rounded-md z-50"
+                        >
+                            <div 
+                                x-data="{ subOpen: false, subTimer: null }" 
+                                @mouseenter="clearTimeout(subTimer); subOpen = true;" 
+                                @mouseleave="subTimer = setTimeout(() => subOpen = false, 200);" 
+                                class="relative"
+                            >
+                                <span class="block px-5 py-2 font-semibold text-gray-600 cursor-pointer">Managed Services</span>
+
+                                <div 
+                                    x-show="subOpen" 
+                                    x-transition 
+                                    class="absolute top-0 left-full ml-1 w-72 bg-white border border-gray-200 rounded shadow-lg z-50"
+                                >
+                                   <div class="text-sm" x-data="{
+    services: [
+        { label: 'End User Computing', url: '/Services/Managed_services/EndUserComputing.html' },
+        { label: 'Data Center Management', url: '/Services/Managed_services/DataCenterManagement.html' },
+        { label: 'NOC Management', url: '/Services/Managed_services/NOCManagement.html' },
+        { label: 'Helpdesk Management', url: '/Services/Managed_services/HelpdeskManagement.html' },
+        { label: 'Security Management', url: '/Services/Managed_services/SecurityManagement.html' },
+        { label: 'Application Management', url: '/Services/Managed_services/ApplicationManagement.html' },
+        { label: 'Asset Management', url: '/Services/Managed_services/AssetManagement.html' },
+        { label: 'Building Management Services', url: '/Services/Managed_services/BuildingManagement.html' },
+        { label: 'Procurement & Billing', url: '/Services/Managed_services/ProcurementBilling.html' }
+    ]
+}">
+    <template x-for="item in services" :key="item.label">
+        <a :href="item.url" class="block px-4 py-2 hover:bg-blue-50 transition text-gray-700" x-text="item.label"></a>
+    </template>
+</div>
+
+                                </div>
+                            </div>
+
+                            <a href="/Services/AMC_andBreakFix.html" class="block px-5 py-2 hover:bg-blue-50 transition">AMC & Break Fix</a>
+                            <a href="/Services/E_waste_management.html" class="block px-5 py-2 hover:bg-blue-50 transition">E-Waste Management</a>
+                        </div>
+                    </div>
+
+                    <!-- Solutions -->
+                    <div 
+                        x-data="{ open: false, timer: null }" 
+                        @mouseenter="clearTimeout(timer); open = true;" 
+                        @mouseleave="timer = setTimeout(() => open = false, 200);" 
+                        class="relative"
+                    >
+                        <button class="flex items-center gap-1 text-gray-700 hover:text-blue-600 transition font-medium">
+                            Solutions
+                            <svg class="w-4 h-4 transition-transform" :class="{ 'rotate-180': open }" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path d="M19 9l-7 7-7-7" />
+                            </svg>
+                        </button>
+                       <div 
+    x-show="open" 
+    x-transition 
+    class="absolute top-full left-1/2 -translate-x-1/2 mt-2 w-72 max-h-72 overflow-auto bg-white shadow-lg border rounded-md z-50"
+    x-data="{ items: [
+        { label: 'Server Solutions', url: '/Solutions/ServerSolutions.html' },
+        { label: 'Network Solutions', url: '/Solutions/NetworkSolutions.html' },
+        { label: 'Storage Solutions', url: '/Solutions/StorageSolutions.html' },
+        { label: 'Cloud Solutions', url: '/Solutions/CloudSolutions.html' },
+        { label: 'Security Solutions', url: '/Solutions/SecuritySolutions.html' },
+        { label: 'Application Solutions', url: '/Solutions/ApplicationSolutions.html' },
+        { label: 'Audio Video Solutions', url: '/Solutions/AudioVideoSolutions.html' },
+        { label: 'Video Surveillance & Biometric Solutions', url: '/Solutions/VideoSandbiometric.html' },
+        { label: 'Rental & Refurbished Solutions', url: '/Solutions/RentalandRefurbished.html' }
+    ]}"
+>
+    <template x-for="item in items" :key="item.label">
+        <a :href="item.url" class="block px-5 py-2 hover:bg-blue-50 transition" x-text="item.label"></a>
+    </template>
+</div>
+
+                    </div>
+
+                    <!-- Contact Us -->
+                    <a href="contact.html" class="text-gray-700 hover:text-blue-600 transition font-medium">Contact Us</a>
+                </nav>
+
+                <!-- Mobile menu button -->
+                <div class="md:hidden">
+                    <button 
+                        @click="mobileMenuOpen = !mobileMenuOpen" 
+                        class="inline-flex items-center justify-center p-2 rounded-md text-gray-700 hover:text-blue-600 hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-blue-500"
+                        :class="{ 'text-blue-600': mobileMenuOpen }"
+                    >
+                        <span class="sr-only">Open main menu</span>
+                        <!-- Hamburger icon -->
+                        <svg 
+                            class="h-6 w-6" 
+                            :class="{ 'hidden': mobileMenuOpen, 'block': !mobileMenuOpen }" 
+                            fill="none" 
+                            viewBox="0 0 24 24" 
+                            stroke="currentColor"
+                        >
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+                        </svg>
+                        <!-- Close icon -->
+                        <svg 
+                            class="h-6 w-6" 
+                            :class="{ 'block': mobileMenuOpen, 'hidden': !mobileMenuOpen }" 
+                            fill="none" 
+                            viewBox="0 0 24 24" 
+                            stroke="currentColor"
+                        >
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+                        </svg>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Mobile menu -->
+        <div x-show="mobileMenuOpen" x-transition class="md:hidden bg-white border-t">
+            <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3">
+                <!-- Home -->
+                <a href="#" class="block px-3 py-2 text-gray-700 hover:text-blue-600 hover:bg-gray-50 rounded-md font-medium">Home</a>
+
+                <!-- About Us -->
+                <div x-data="{ open: false }">
+                    <button @click="open = !open" class="flex items-center justify-between w-full px-3 py-2 text-gray-700 hover:text-blue-600 hover:bg-gray-50 rounded-md font-medium">
+                        About Us
+                        <svg class="w-4 h-4 transition-transform" :class="{ 'rotate-180': open }" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path d="M19 9l-7 7-7-7" />
+                        </svg>
+                    </button>
+                    <div x-show="open" x-transition class="pl-6 space-y-1">
+                        <a href="/About-us/companyOverview.html" class="block px-3 py-2 text-sm text-gray-600 hover:text-blue-600 hover:bg-gray-50 rounded-md">Company Overview</a>
+                        <a href="/About-us/leadershipTeam.html" class="block px-3 py-2 text-sm text-gray-600 hover:text-blue-600 hover:bg-gray-50 rounded-md">Leadership Team</a>
+                        <a href="/About-us/Mission-Vission-Values.html" class="block px-3 py-2 text-sm text-gray-600 hover:text-blue-600 hover:bg-gray-50 rounded-md">Mission, Vision, Values</a>
+                    </div>
+                </div>
+
+                <!-- Sales -->
+                <div x-data="{ open: false }">
+                    <button @click="open = !open" class="flex items-center justify-between w-full px-3 py-2 text-gray-700 hover:text-blue-600 hover:bg-gray-50 rounded-md font-medium">
+                        Sales
+                        <svg class="w-4 h-4 transition-transform" :class="{ 'rotate-180': open }" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path d="M19 9l-7 7-7-7" />
+                        </svg>
+                    </button>
+                    <div x-show="open" x-transition class="pl-6 space-y-1">
+                        <template x-for="item in ['End point', 'Data Center', 'Connectivity', 'Security', 'Audio & Telephony', 'Handheld', 'Printing & Scanning', 'Video Conferencing', 'Visual Display', 'Peripherals', 'License', 'Power', 'Security Surveillance']">
+                            <a href="#" class="block px-3 py-2 text-sm text-gray-600 hover:text-blue-600 hover:bg-gray-50 rounded-md" x-text="item"></a>
+                        </template>
+                    </div>
+                </div>
+
+                <!-- Services -->
+                <div x-data="{ open: false, managedOpen: false }">
+                    <button @click="open = !open" class="flex items-center justify-between w-full px-3 py-2 text-gray-700 hover:text-blue-600 hover:bg-gray-50 rounded-md font-medium">
+                        Services
+                        <svg class="w-4 h-4 transition-transform" :class="{ 'rotate-180': open }" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path d="M19 9l-7 7-7-7" />
+                        </svg>
+                    </button>
+                    <div x-show="open" x-transition class="pl-6 space-y-1">
+                        <!-- Managed Services Submenu -->
+                        <div>
+                            <button @click="managedOpen = !managedOpen" class="flex items-center justify-between w-full px-3 py-2 text-sm text-gray-600 hover:text-blue-600 hover:bg-gray-50 rounded-md font-semibold">
+                                Managed Services
+                                <svg class="w-3 h-3 transition-transform" :class="{ 'rotate-180': managedOpen }" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path d="M19 9l-7 7-7-7" />
+                                </svg>
+                            </button>
+                            <div x-show="managedOpen" x-transition class="pl-6 space-y-1">
+                                <template x-for="item in ['End User Computing', 'Data Center Management', 'NOC Management', 'Helpdesk Management', 'Security Management', 'Application Management', 'Asset Management', 'Building Management Services', 'Procurement & Billing']">
+                                    <a href="#" class="block px-3 py-2 text-xs text-gray-500 hover:text-blue-600 hover:bg-gray-50 rounded-md" x-text="item"></a>
+                                </template>
+                            </div>
+                        </div>
+                        <a href="#" class="block px-3 py-2 text-sm text-gray-600 hover:text-blue-600 hover:bg-gray-50 rounded-md">AMC & Break Fix</a>
+                        <a href="#" class="block px-3 py-2 text-sm text-gray-600 hover:text-blue-600 hover:bg-gray-50 rounded-md">E-Waste Management</a>
+                    </div>
+                </div>
+
+                <!-- Solutions -->
+                <div x-data="{ open: false }">
+                    <button @click="open = !open" class="flex items-center justify-between w-full px-3 py-2 text-gray-700 hover:text-blue-600 hover:bg-gray-50 rounded-md font-medium">
+                        Solutions
+                        <svg class="w-4 h-4 transition-transform" :class="{ 'rotate-180': open }" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path d="M19 9l-7 7-7-7" />
+                        </svg>
+                    </button>
+                    <div x-show="open" x-transition class="pl-6 space-y-1">
+                        <template x-for="item in ['Server Solutions', 'Network Solutions', 'Storage Solutions', 'Cloud Solutions', 'Security Solutions', 'Application Solutions', 'Audio Video Solutions', 'Video Surveillance & Biometric Solutions', 'Rental & Refurbished Solutions']">
+                            <a href="#" class="block px-3 py-2 text-sm text-gray-600 hover:text-blue-600 hover:bg-gray-50 rounded-md" x-text="item"></a>
+                        </template>
+                    </div>
+                </div>
+
+                <!-- Contact Us -->
+                <a href="contact.html" class="block px-3 py-2 text-gray-700 hover:text-blue-600 hover:bg-gray-50 rounded-md font-medium">Contact Us</a>
+            </div>
+        </div>
+    </header>
+
+  </head>
+
+
+
+
+  <body class="bg-gray-50 text-gray-900">
+   
+
+
+
+
+   
+     
+<section class="py-8 ">
+<div id="default-carousel" class="relative w-full" data-carousel="slide">
+    <!-- Carousel wrapper -->
+    <div class="relative h-56 overflow-hidden rounded-lg md:h-96">
+         <!-- Item 1 -->
+        <div class="hidden duration-700 ease-in-out" data-carousel-item>
+            <img src="/Images/about-us.png" class="absolute block w-full -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2" alt="...">
+        </div>
+        <!-- Item 2 -->
+        <div class="hidden duration-700 ease-in-out" data-carousel-item>
+            <img src="/Images/approah.jpg" class="absolute block w-full -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2" alt="...">
+        </div>
+        <!-- Item 3 -->
+        <div class="hidden duration-700 ease-in-out" data-carousel-item>
+            <img src="/Images/approah.jpg" class="absolute block w-full -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2" alt="...">
+        </div>
+        <!-- Item 4 -->
+        <div class="hidden duration-700 ease-in-out" data-carousel-item>
+            <img src="/Images/approah.jpg" class="absolute block w-full -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2" alt="...">
+        </div>
+        <!-- Item 5 -->
+        <div class="hidden duration-700 ease-in-out" data-carousel-item>
+            <img src="/Images/approah.jpg" class="absolute block w-full -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2" alt="...">
+        </div>
+    </div>
+    <!-- Slider indicators -->
+    <div class="absolute z-30 flex -translate-x-1/2 bottom-5 left-1/2 space-x-3 rtl:space-x-reverse">
+        <button type="button" class="w-3 h-3 rounded-full" aria-current="true" aria-label="Slide 1" data-carousel-slide-to="0"></button>
+        <button type="button" class="w-3 h-3 rounded-full" aria-current="false" aria-label="Slide 2" data-carousel-slide-to="1"></button>
+        <button type="button" class="w-3 h-3 rounded-full" aria-current="false" aria-label="Slide 3" data-carousel-slide-to="2"></button>
+        <button type="button" class="w-3 h-3 rounded-full" aria-current="false" aria-label="Slide 4" data-carousel-slide-to="3"></button>
+        <button type="button" class="w-3 h-3 rounded-full" aria-current="false" aria-label="Slide 5" data-carousel-slide-to="4"></button>
+    </div>
+    <!-- Slider controls -->
+    <button type="button" class="absolute top-0 start-0 z-30 flex items-center justify-center h-full px-4 cursor-pointer group focus:outline-none" data-carousel-prev>
+        <span class="inline-flex items-center justify-center w-10 h-10 rounded-full bg-white/30 dark:bg-gray-800/30 group-hover:bg-white/50 dark:group-hover:bg-gray-800/60 group-focus:ring-4 group-focus:ring-white dark:group-focus:ring-gray-800/70 group-focus:outline-none">
+            <svg class="w-4 h-4 text-white dark:text-gray-800 rtl:rotate-180" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 6 10">
+                <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 1 1 5l4 4"/>
+            </svg>
+            <span class="sr-only">Previous</span>
+        </span>
+    </button>
+    <button type="button" class="absolute top-0 end-0 z-30 flex items-center justify-center h-full px-4 cursor-pointer group focus:outline-none" data-carousel-next>
+        <span class="inline-flex items-center justify-center w-10 h-10 rounded-full bg-white/30 dark:bg-gray-800/30 group-hover:bg-white/50 dark:group-hover:bg-gray-800/60 group-focus:ring-4 group-focus:ring-white dark:group-focus:ring-gray-800/70 group-focus:outline-none">
+            <svg class="w-4 h-4 text-white dark:text-gray-800 rtl:rotate-180" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 6 10">
+                <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 9 4-4-4-4"/>
+            </svg>
+            <span class="sr-only">Next</span>
+        </span>
+    </button>
+</div>
+</section>
+   
+
+    <!-- Capabilities Section -->
+    <section class="w-full   border border-gray-200 rounded-lg shadow-md py-16 px-8 md:px-16 lg:px-20 bg-gradient-to-br from-white via-[#fff3f3] via-30% to-[#e6eaff] to-90%">       
+        <div class="max-w-5xl mx-auto text-center">         
+            <h2 class="text-3xl md:text-4xl font-bold mb-8 text-[#820236] tracking-wide">Insiza Capabilities…</h2>         
+            
+            <div class="text-gray-700 text-lg leading-relaxed space-y-6 max-w-4xl mx-auto">
+                <h6 class="text-gray-800   mb-4">
+                    At Insiza Technologies Pvt Ltd., we're dedicated to delivering top-quality IT and telecommunication infrastructure solutions that meet the evolving needs of modern businesses. Our mission is to empower organizations with reliable, innovative, and future-ready technology services.
+                </h6>
+                
+                <p class="text-gray-700 px-4 md:px-8">
+                    As a trusted managed service provider, Insiza Technologies Pvt. Ltd. ensures seamless delivery of our clients' services and products across all business segments. We prioritize quality, reliability, and continuity to help businesses run without interruption.
+                </p>
+                
+                <p class="text-gray-700 px-4 md:px-8">
+                    At Insiza Technologies Pvt. Ltd., we act as a strategic system integrator—helping businesses optimize their IT and telecommunication investments while aligning costs with their growth journey. Our goal is to deliver scalable, cost-effective solutions that drive long-term value.
+                </p>
+            </div>
+            
+            <div class="mt-10">
+                <button type="button" class="text-white bg-gradient-to-br from-[#FF0413] to-[#040058] hover:from-[#e10412] hover:to-[#03004a] focus:ring-4 focus:outline-none focus:ring-red-200 dark:focus:ring-red-800 font-medium rounded-lg text-sm px-8 py-3 text-center shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105">
+                    Read More
+                </button>
+            </div>
+        </div>                   
+    </section>
+
+    
+<section class="w-full p-8 border border-gray-200 rounded-lg shadow-md bg-gradient-to-br from-white via-[#fff3f3] via-30% to-[#e6eaff] to-90%">
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <!-- Sales Card -->
+        <div class="max-w-sm p-6 border border-[#490138] rounded-lg shadow-sm hover:shadow-md transition-shadow duration-300 hover:border-[#05005B] bg-white bg-gradient-to-br from-white via-[#fff3f3] via-30% to-[#e6eaff] to-90% glass-effect">
+            <img src="svg/sales-img.svg" alt="Sales icon" class="w-60 h-50 mx-auto">
+            <h1 class="font-semibold text-2xl text-center py-4 text-[#05005B]">Sales</h1>
+            <p class="text-gray-600 leading-relaxed">
+                At Insiza Technologies Pvt. Ltd., we offer an extensive range of reliable IT products and peripherals—including servers, networking equipment, storage solutions, routers, switches, and more—tailored to suit various business needs. We take the time to understand our customers' requirements and recommend the most suitable products that align with their budget and IT environment, ensuring maximum efficiency, performance, and value.
+            </p>
+        </div>
+
+        <!-- Solutions Card -->
+        <div class="max-w-sm p-6 border border-[#490138] rounded-lg shadow-sm hover:shadow-md transition-shadow duration-300 hover:border-[#05005B] bg-white bg-gradient-to-br from-white via-[#fff3f3] via-30% to-[#e6eaff] to-90% glass-effect">
+            <img src="svg/solution-img.svg" alt="Solutions icon" class="w-60 h-50 mx-auto">
+            <h1 class="font-semibold text-2xl text-center py-4 text-[#05005B]">Solutions</h1>
+            <p class="text-gray-600 leading-relaxed">
+                At Insiza Technologies Pvt. Ltd., our strategic partnerships with leading OEMs like Cisco, Dell, HP, Lenovo, and Fortinet empower us to deliver high-performance IT and telecom solutions tailored to modern business needs. By leveraging top-tier technologies, we help organizations build secure, scalable, and future-ready digital platforms—ensuring they stay competitive in today's rapidly evolving digital landscape.
+            </p>
+        </div>
+
+        <!-- Services Card -->
+        <div class="max-w-sm p-6 border border-[#490138] rounded-lg shadow-sm hover:shadow-md transition-shadow duration-300 hover:border-[#05005B] bg-white bg-gradient-to-br from-white via-[#fff3f3] via-30% to-[#e6eaff] to-90% glass-effect">
+            <img src="svg/service-img.svg" alt="Services icon" class="w-60 h-50 mx-auto">
+            <h1 class="font-semibold text-2xl text-center py-4 text-[#05005B]">Services</h1>
+            <p class="text-gray-600 leading-relaxed">
+                Managed Services are at the core of Insiza Technologies Pvt. Ltd.'s expertise. We work closely with our clients to understand their business objectives and align with their IT functions and sub-functions—ensuring seamless integration, operational efficiency, and cost optimization. Our comprehensive managed service offerings include remote monitoring, helpdesk support, infrastructure management, cloud services, and network security. With a focus on meeting defined SLAs and OLAs, we deliver consistent performance and peace of mind in today's fast-paced digital environment.
+            </p>
+        </div>
+    </div>
+</section>
+
+<section class="w-full p-8 border border-gray-200 rounded-lg shadow-md bg-gradient-to-br from-white via-[#fff3f3] via-30% to-[#e6eaff] to-90%">
+  <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
+    
+   
+    <div class="space-y-6">
+      <h1 class="text-2xl font-bold text-[#05005B]">Insiza’s Objective</h1>
+      <p class="text-gray-700 leading-relaxed">
+       At Insiza Technologies Pvt. Ltd., our mission is to partner with businesses across all industries—both in India and globally—to deliver value-driven IT and telecom solutions. We focus on offering smart investment strategies that help our clients maximize returns, streamline operations, and accelerate revenue growth.
+
+
+      <!-- <h2 class="text-2xl font-bold text-[#05005B]">Our Commitment</h2> -->
+      <p class="text-gray-700 leading-relaxed">
+        Our commitment to continuous improvement, adoption of the latest technologies, and constant upskilling of our team ensures we stay ahead in a competitive market. This dedication has earned us the trust of leading industry players, making Insiza a preferred technology partner for scalable and future-ready solutions.
+      </p>
+
+      <button type="button" class="text-white bg-gradient-to-br from-[#FF0413] to-[#040058] hover:from-[#e10412] hover:to-[#03004a] focus:ring-4 focus:outline-none focus:ring-red-200 dark:focus:ring-red-800 font-medium rounded-lg text-sm px-6 py-2.5 text-center">
+        Read More
+      </button>
+    </div>
+
+   
+    <div class="flex justify-center">
+      <img src="Images/objectives.jpg" alt="Insiza Objective" class="w-full h-auto max-w-md rounded-lg shadow-lg ">
+    </div>
+
+  </div>
+</section>
+
+<section class="w-full p-8 border border-gray-200 rounded-lg shadow-md bg-gradient-to-br from-white via-[#fff3f3] via-30% to-[#e6eaff] to-90%">
+  <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
+    <div class="flex justify-center">
+      <img src="Images/approah.jpg" alt="Insiza Objective" class="w-full h-auto max-w-md rounded-lg shadow-lg ">
+    </div>
+
+   
+    <div class="space-y-6">
+      <h1 class="text-2xl font-bold text-[#05005B]">Insiza’s Approach</h1>
+      <p class="text-gray-700 leading-relaxed">
+       At Insiza Technologies Pvt. Ltd., we take the time to deeply understand our clients' business delivery models. This allows us to offer flexible, high-quality IT and telecommunication solutions that align with their goals and help them stand out in competitive markets. Our solutions are backed by efficient delivery frameworks designed to elevate capabilities and drive consistent performance.
+
+
+
+
+
+
+      </p>
+      <p class="text-gray-700 leading-relaxed">We also understand the importance of cost-efficiency. Insiza is committed to helping businesses reduce unnecessary IT and telecom expenditures while maintaining the highest standards in product and service delivery—ensuring every investment delivers true value..</p>
+
+      
+      <p class="text-gray-700 leading-relaxed">
+     With advanced data analytics and real-time trend monitoring, we proactively assess the performance of our products and services. This insight helps us plan timely upgrades and implementations, enabling our clients to stay ahead of potential challenges and maintain business continuity.
+h themselves in the market with top-tier products and services.
+      </p>
+
+      <button type="button" class="text-white bg-gradient-to-br from-[#FF0413] to-[#040058] hover:from-[#e10412] hover:to-[#03004a] focus:ring-4 focus:outline-none focus:ring-red-200 dark:focus:ring-red-800 font-medium rounded-lg text-sm  px-6 py-2.5  text-center">
+        Read More
+      </button>
+    </div>
+
+   
+    
+  </div>
+</section>
+
+
+<section class="w-full p-8 border border-gray-200 rounded-lg shadow-md bg-gradient-to-br from-white via-[#fff3f3] via-30% to-[#e6eaff] to-90%">
+  <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
+    
+   
+    <div class="space-y-6">
+      <h1 class="text-2xl font-bold text-[#05005B]">What Makes Insiza Unique</h1>
+      <p class="text-gray-700 leading-relaxed">
+       With over a decade of experience in the IT and telecommunication industry, the team at Insiza Technologies Pvt. Ltd. has successfully navigated the challenges faced by both startups and large-scale enterprises. Our deep industry insight enables us to understand the unique roadblocks businesses encounter during digital transformation and infrastructure scaling.
+
+
+      </p>
+
+      
+      <p class="text-gray-700 leading-relaxed">
+  At Insiza, we specialize in delivering end-to-end lifecycle management for IT solutions and telecom services. Our experts design and implement seamless, future-ready systems using the latest technologies—resulting in innovative, high-performance solutions that empower businesses to grow efficiently and stay ahead in today’s competitive digital landscape.
+
+
+
+
+
+
+      </p>
+
+      <button type="button" class="text-white bg-gradient-to-br from-[#FF0413] to-[#040058] hover:from-[#e10412] hover:to-[#03004a] focus:ring-4 focus:outline-none focus:ring-red-200 dark:focus:ring-red-800 font-medium rounded-lg text-sm px-6 py-2.5 text-center">
+        Read More
+      </button>
+    </div>
+
+   
+    <div class="flex justify-center">
+      <img src="Images/uniqueness!.jpg" alt="Insiza uniqueness" class="w-full h-auto max-w-md rounded-lg shadow-lg ">
+    </div>
+
+  </div>
+</section>
+
+
+
+<section id="service-process" class="py-16 bg-gray-50">
+  <div class="container mx-auto px-4">
+    <h2 class="text-4xl font-bold text-center text-gray-800 mb-12">Service Process</h2>
+    <div class="flex flex-col md:flex-row items-stretch justify-center space-y-10 md:space-y-0 md:space-x-8">
+      
+      <!-- Step 1 -->
+      <div class="flex flex-col items-center text-center max-w-xs glass-effect bg-white   rounded-xl shadow-lg">
+        <img src="Images/Think.png" alt="Think" class="w-full h-auto  mb-4" />
+        <h4 class="text-xl font-semibold text-gray-800  px-6">Think</h4>
+        <p class="text-gray-600 p-6">At Insiza Technologies Pvt. Ltd., our top priority is understanding the unique business goals and challenges of our customers and partners. By actively listening and engaging with them, we deliver tailored IT and telecommunication solutions that drive growth, enhance efficiency, and support long-term success..</p>
+      </div>
+
+      <!-- Arrow -->
+      <div class="hidden md:flex items-center ">
+        <i class="fas fa-chevron-right text-3xl text-[#05005B]"></i>
+      </div>
+
+      <!-- Step 2 -->
+      <div class="flex flex-col items-center text-center max-w-xs glass-effect bg-white   rounded-xl shadow-lg">
+        <img src="Images/Plan.jpg" alt="Plan" class="w-full h-auto mb-4" />
+        <h4 class="text-xl font-semibold text-gray-800 px-6">Plan</h4>
+        <p class="text-gray-600 p-6">At Insiza Technologies Pvt. Ltd., we believe strategic planning is the foundation of every successful IT and telecom project. A well-structured approach allows us to execute solutions efficiently, meet key milestones, and deliver consistent results that align with our clients’ business goals.</p>
+      </div>
+
+      <!-- Arrow -->
+      <div class="hidden md:flex items-center">
+        <i class="fas fa-chevron-right text-3xl text-[#05005B]"></i>
+      </div>
+
+      <!-- Step 3 -->
+      <div class="flex flex-col items-center text-center max-w-xs glass-effect bg-white rounded-xl shadow-lg">
+        <img src="Images/deliver.jpg" alt="Deliver" class="w-full h-auto mb-4" />
+        <h4 class="text-xl font-semibold text-gray-800  px-6">Deliver</h4>
+        <p class="text-gray-600 p-6">At Insiza Technologies Pvt. Ltd., our focus on seamless project delivery and continuous improvement has consistently helped us achieve high customer satisfaction (CSAT) scores. We’re committed to refining our IT and telecom solutions to ensure reliable performance and exceptional client experiences.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+
+
+
+<footer class="bg-gray-100 text-gray-700 mt-12 border-t">
+  <div class="max-w-7xl mx-auto px-4 pt-12 sm:px-6 lg:px-8">
+    <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+      
+      <!-- Logo & Description -->
+      <div>
+        <img src="Images/5.png" alt="Logo" class="h-50 w-40 mb-4">
+        
+      </div>
+
+      <!-- Company -->
+      <div>
+        <h3 class="text-lg font-semibold mb-4">Company</h3>
+        <ul class="space-y-2 text-sm">
+          <li><a href="#" class="hover:text-blue-600">About Us</a></li>
+          <li><a href="#" class="hover:text-blue-600">Leadership Team</a></li>
+          <li><a href="#" class="hover:text-blue-600">Mission, Vision, Values</a></li>
+        </ul>
+      </div>
+
+      <!-- Services -->
+      <div>
+        <h3 class="text-lg font-semibold mb-4">Services</h3>
+        <ul class="space-y-2 text-sm">
+          <li><a href="#" class="hover:text-blue-600">Managed Services</a></li>
+          <li><a href="#" class="hover:text-blue-600">AMC & Break Fix</a></li>
+          <li><a href="#" class="hover:text-blue-600">E-Waste Management</a></li>
+        </ul>
+      </div>
+
+      <!-- Contact & Social -->
+      <div>
+        <h3 class="text-lg font-semibold mb-4">Contact Us</h3>
+        <p class="text-sm mb-2">5th Floor, Innovative Tower, opp. Zensar Technologies, near Eon School, Rakshak Nagar, Kharadi, Pune, Maharashtra 411014</p>
+        <p class="text-sm mb-2">Email: info@example.com</p>
+        <p class="text-sm mb-4">Phone: 020 2681 4444</p>
+        <div class="flex space-x-4">
+          <a href="#" aria-label="Facebook" class="text-gray-500 hover:text-blue-600">
+            <!-- Facebook Icon -->
+            <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+              <path d="M22 12a10 10 0 1 0-11.5 9.9v-7h-2v-2.9h2V9.5c0-2 1.2-3.1 3-3.1.9 0 1.8.2 1.8.2v2h-1c-1 0-1.3.6-1.3 1.2v1.5h2.2l-.4 2.9h-1.8v7A10 10 0 0 0 22 12z"/>
+            </svg>
+          </a>
+          <a href="#" aria-label="LinkedIn" class="text-gray-500 hover:text-blue-600">
+            <!-- LinkedIn Icon -->
+            <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+              <path d="M19 0h-14c-2.8 0-5 2.2-5 5v14c0 2.8 2.2 5 5 5h14c2.7 0 5-2.2 5-5v-14c0-2.8-2.3-5-5-5zM7.5 19h-3v-9h3v9zM6 8.5c-1 0-1.8-.8-1.8-1.8s.8-1.8 1.8-1.8 1.8.8 1.8 1.8-.8 1.8-1.8 1.8zM20 19h-3v-4.5c0-1.1-.9-2-2-2s-2 .9-2 2v4.5h-3v-9h3v1.2c.6-.9 1.7-1.4 2.8-1.4 2.2 0 4 1.8 4 4v5.2z"/>
+            </svg>
+          </a>
+          <!-- Add more icons as needed -->
+        </div>
+      </div>
+    </div>
+
+    <!-- Footer Bottom -->
+    <div class="mt-8 border-t pt-6 text-sm text-center text-gray-500">
+      &copy; 2025 Insiza Technologies Pvt Ltd . All rights reserved.
+    </div>
+  </div>
+</footer>
+<script src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js" defer></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.3.0/flowbite.min.js"></script>
+  </body>
+
+</html>
